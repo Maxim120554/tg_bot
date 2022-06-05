@@ -12,7 +12,8 @@ async def get_info(bot: Bot, message: types.Message):
         'UserAgent': ua.random
     }
     try:
-        req = requests.get(f'https://coinmarketcap.com/currencies/{message.text.lower()}/markets/', headers=headers)
+        text = message.text.replace(' ', '-')
+        req = requests.get(f'https://coinmarketcap.com/currencies/{text.lower()}/markets/', headers=headers)
         soup = BeautifulSoup(req.text, 'lxml')
         symbol = soup.find('small', class_='nameSymbol').text
         price = soup.find('div', class_='priceValue').text

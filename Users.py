@@ -6,6 +6,7 @@ class User:
     lastname = ''
     favorites = []        # избранные монеты
     messages = []
+    is_add_favorites = False
 
     def __init__(self, name, lastname, id):
         self.id = id
